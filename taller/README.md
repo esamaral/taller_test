@@ -1,69 +1,82 @@
-# React + TypeScript + Vite
+# Payment Transaction Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React + TypeScript dashboard for viewing, filtering, and summarizing payment transactions. Built with [Material UI (MUI)](https://mui.com/) for a responsive and clean user experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Transaction List:** View a paginated list of transactions.
+- **Date Range Filter:** Filter transactions by start and end date.
+- **Description Filter:** Search transactions by description.
+- **Sort:** Sort transactions by amount (ascending/descending).
+- **Summary:** See total number of transactions and total amount (in USD) for the current filter.
+- **Responsive Design:** Looks great on desktop and mobile.
+- **Error Handling:** Graceful error messages for data loading issues.
+- **Modern UI:** Built with MUI components for a consistent look and feel.
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Prerequisites
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js (v18+ recommended)
+- npm or yarn
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Installation
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+1. **Clone the repository:**
+   ```sh
+   git clone https://github.com/your-username/your-repo.git
+   cd your-repo
+   ```
+
+2. **Install dependencies:**
+   ```sh
+   npm install
+   # or
+   yarn install
+   ```
+
+3. **Start the development server:**
+   ```sh
+   npm start
+   # or
+   yarn start
+   ```
+
+4. **Open in your browser:**
+   ```
+   http://localhost:5173
+   ```
+
+## Project Structure
+
+```
+src/
+  components/
+    Dashboard.tsx         # Main dashboard UI and filters
+    TransactionList.tsx   # List, summary, and pagination
+    TransactionItem.tsx   # Individual transaction card
+    Dashboard.css         # Custom styles
+  data/
+    transactions.ts       # Mock transaction data
+  types/
+    transaction.ts        # TypeScript types
+  index.tsx               # App entry point
+  index.css               # Global styles
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Customization
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Transaction Data:** Edit `src/data/transactions.ts` to change or expand the mock data.
+- **Styling:** Adjust MUI theme or add styles in `Dashboard.css` or `index.css`.
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Scripts
+
+- `npm start` — Run the app in development mode.
+- `npm run build` — Build for production.
+- `npm test` — Run tests (if available).
+
+## License
+
+MIT
+
+---
