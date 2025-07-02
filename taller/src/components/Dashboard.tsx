@@ -8,13 +8,45 @@ const Dashboard: React.FC = () => {
         setDateRange({ start, end });
     };
 
+    // Helper to format date for input[type="date"]
+    const formatDate = (date: Date | null) =>
+        date ? date.toISOString().split('T')[0] : '';
+
+    // Handlers for input changes
+    const handleStartChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value ? new Date(e.target.value) : null;
+        handleDateRangeChange(value, dateRange.end);
+    };
+
+    const handleEndChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const value = e.target.value ? new Date(e.target.value) : null;
+        handleDateRangeChange(dateRange.start, value);
+    };
+
     return (
         <div>
             <h1>Payment Transaction Dashboard</h1>
             <div>
-                {/* Date range filter can be implemented here */}
                 <h2>Filter by Date Range</h2>
-                {/* Date range input components would go here */}
+                <label>
+                    Start Date:{' '}
+                    <input
+                        type="date"
+                        value={formatDate(dateRange.start)}
+                        onChange={handleStartChange}
+                        max={formatDate(dateRange.end)}
+                    />
+                </label>
+                {' '}
+                <label>
+                    End Date:{' '}
+                    <input
+                        type="date"
+                        value={formatDate(dateRange.end)}
+                        onChange={handleEndChange}
+                        min={formatDate(dateRange.start)}
+                    />
+                </label>
             </div>
             <TransactionList dateRange={dateRange} />
         </div>
